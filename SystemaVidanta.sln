@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemaVidanta", "SystemaVidanta\SystemaVidanta.csproj", "{8ABEA8C0-0BE8-46DD-8A5E-6AA0C2713551}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemaVidanta.Tests", "SystemaVidanta.Tests\SystemaVidanta.Tests.csproj", "{DD77EE98-68CF-459A-8B2B-CB4CB2C7585E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8ABEA8C0-0BE8-46DD-8A5E-6AA0C2713551}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ABEA8C0-0BE8-46DD-8A5E-6AA0C2713551}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ABEA8C0-0BE8-46DD-8A5E-6AA0C2713551}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ABEA8C0-0BE8-46DD-8A5E-6AA0C2713551}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD77EE98-68CF-459A-8B2B-CB4CB2C7585E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD77EE98-68CF-459A-8B2B-CB4CB2C7585E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD77EE98-68CF-459A-8B2B-CB4CB2C7585E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD77EE98-68CF-459A-8B2B-CB4CB2C7585E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C0A31D0-E178-4CC3-B63E-C03F8DBF1096}
+	EndGlobalSection
+EndGlobal
