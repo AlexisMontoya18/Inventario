@@ -48,8 +48,8 @@
         @Html.AntiForgeryToken()
 
 <div class="form-actions no-color">
-    <input type="submit" value="Borrar" class="btn btn-default" />
-    @Html.ActionLink("Regresar Lista", "Index")
+    <input type="submit" value="Borrar" class="btn btn-danger" /> |
+    <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
 </div>
     }
 </div>
