@@ -4,17 +4,26 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Detalle Articulo</h2>
+<h2>Details</h2>
 
 <div>
+    <h4>Article</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.NombreArtículo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nombre)
+            @Html.DisplayFor(model => model.NombreArtículo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripción)
         </dd>
 
         <dt>
@@ -34,16 +43,24 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.descripcion)
+            @Html.DisplayNameFor(model => model.FechaEntrada)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.descripcion)
+            @Html.DisplayFor(model => model.FechaEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaSalida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaSalida)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Regrersar Lista", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

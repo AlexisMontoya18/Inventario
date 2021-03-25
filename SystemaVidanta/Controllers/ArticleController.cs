@@ -14,14 +14,27 @@ namespace SystemaVidanta.Controllers
     public class ArticleController : Controller
     {
         private SystemVidantaContext db = new SystemVidantaContext();
-
-        // GET: Articles
+        [HttpPost]
+        public JsonResult BuscarArticulos(int? id, bool json = false)
+        {
+            if (id == null)
+            {
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+            Article article = db.Article.Find(id);
+            if (article == null)
+            {
+                return Json(json, JsonRequestBehavior.AllowGet);
+            }
+            return Json(article, JsonRequestBehavior.AllowGet);
+        }
+        // GET: Article
         public ActionResult Index()
         {
             return View(db.Article.ToList());
         }
 
-        // GET: Articles/Details/5
+        // GET: Article/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,18 +49,18 @@ namespace SystemaVidanta.Controllers
             return View(article);
         }
 
-        // GET: Articles/Create
+        // GET: Article/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Articles/Create
+        // POST: Article/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre,Marca,Modelo,descripcion")] Article article)
+        public ActionResult Create([Bind(Include = "ID,NombreArtículo,Descripción,Marca,Modelo,FechaEntrada,FechaSalida")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +72,7 @@ namespace SystemaVidanta.Controllers
             return View(article);
         }
 
-        // GET: Articles/Edit/5
+        // GET: Article/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,12 +87,12 @@ namespace SystemaVidanta.Controllers
             return View(article);
         }
 
-        // POST: Articles/Edit/5
+        // POST: Article/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre,Marca,Modelo,descripcion")] Article article)
+        public ActionResult Edit([Bind(Include = "ID,NombreArtículo,Descripción,Marca,Modelo,FechaEntrada,FechaSalida")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +103,7 @@ namespace SystemaVidanta.Controllers
             return View(article);
         }
 
-        // GET: Articles/Delete/5
+        // GET: Article/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,7 +118,7 @@ namespace SystemaVidanta.Controllers
             return View(article);
         }
 
-        // POST: Articles/Delete/5
+        // POST: Article/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

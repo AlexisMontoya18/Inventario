@@ -4,12 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Usuarios Registrados</h2>
+<h2 align="center">USUARIOS REGISTRADOS </h2>
 
 <p>
-    @Html.ActionLink("Crear Nuevo", "Create")
+   
+    <a href="@Url.Action("Create")" class="btn btn-success btn-xs">Crear Nuevo <span class="glyphicon glyphicon-user"></span></a>
+
 </p>
-<table class="table">
+<table class=" well table table-bordered">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -48,9 +50,9 @@
                 @Html.DisplayFor(modelItem => item.Active)
             </td>
             <td>
-                @Html.ActionLink("Ediar", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Detalle", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Borrar", "Delete", new { id = item.ID })
+                <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a>
+                <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Info <span class="glyphicon glyphicon-info-sign"></span></a>
+                <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>
             </td>
         </tr>
     }

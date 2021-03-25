@@ -12,10 +12,23 @@ namespace SystemaVidanta.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        public string Nombre { get; set; }
+        [Required]
+        public string NombreArtículo { get; set; }
+       
+        [Required]
+        public string Descripción { get; set; }
+        [Required]
         public string Marca { get; set; }
+        [Required]
         public string Modelo { get; set; }
-        public string descripcion { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public string FechaEntrada { get; set; }
+        [Required]
+        [DataType(DataType.Date)]
+        public string FechaSalida { get; set; }
 
+
+      
     }
 }

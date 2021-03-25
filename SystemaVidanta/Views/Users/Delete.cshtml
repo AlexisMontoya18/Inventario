@@ -4,61 +4,67 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>¿Estás seguro de que quieres eliminar esto?</h3>
-<div>
-   
+<div class="container ">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="well col-sm-8 col-md-8 col-lg-8">
+        <h2 align="center">ELIMINAR CUENTA </h2>
+        <center>
+            <h3>¿Estás seguro de que quieres eliminar esto?</h3> <br />
+        </center>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Username)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Username)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Password)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Password)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Level)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Level)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Level)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Level)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Active)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Active)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Active)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Active)
+            </dd>
 
-    </dl>
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Borrar" class="btn btn-danger" /> |
+                <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+            </div>
+        }
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Borrar" class="btn btn-default" /> |
-            @Html.ActionLink("Regresar a la lista", "Index")
-        </div>
-    }
-</div>
+    </div>
+    </div>
+
+      

@@ -33,6 +33,8 @@ namespace SystemaVidanta.DAL
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
 
-        public System.Data.Entity.DbSet<SystemaVidanta.Models.Register> Registers { get; set; }
+        
+
+        public System.Data.Entity.DbSet<SystemaVidanta.Models.Guard> Guards { get; set; }
     }
 }
