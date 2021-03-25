@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Sistema control de inventario grupo vidanta</title>
+    <title>@ViewBag.Title - INVENTARIO CONTRALORIA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
@@ -21,7 +21,7 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                 @Html.ActionLink("CONTROL INVENTARIO ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink(" INVENTARIO CONTRALORIA ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
 
             <div class="navbar-collapse collapse">
@@ -35,15 +35,17 @@
                     {
 
 
-                        <li>@Html.ActionLink("Registrar Articulo", "create", "Article")</li>
+                        <li>@Html.ActionLink("ARTICULOS", "create", "Article")</li>
 
 
 
-                        <li>@Html.ActionLink("Registrar Empleado", "create", "Register")</li>
 
-                      
 
-                        <li>@Html.ActionLink("Cerrar Sesion", "logout", "Home")</li>
+                        <li>@Html.ActionLink("RESGUARDO", "create", "Guard")</li>
+
+                        <li>@Html.ActionLink("REGISTROS", "index", "users")</li>
+
+                        <li>@Html.ActionLink("CERRAR SESIÓN", "logout", "Home")</li>
 
 
                     }
@@ -66,12 +68,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - CONTROL INVENTARIO VIDANTA</p>
+            <p>&copy; @DateTime.Now.Year - CONTRALORIA </p>
         </footer>
     </div>
 
+    <script src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.js" type="text/javascript"></script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Scripts/Resguardos.js")
 </body>
 </html>

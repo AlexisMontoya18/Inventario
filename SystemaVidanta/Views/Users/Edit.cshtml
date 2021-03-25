@@ -4,15 +4,18 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Editar Usuarios</h2>
+
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
+<div class="container">
 
-        <hr />
+    <hr />
+   
+    <div class="well col-sm-6 col-md-6 col-lg-6">
+        <h2 align="center">EDITAR USUARIOS   </h2> <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
 
@@ -53,19 +56,26 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Active, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Active, "", new { @class = "text-danger" })
-            </div>
+            </div> 
+       
         </div>
+        
 
         <div class="form-group">
-            <div class="col-md-offset-3 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+            <div class="col-md-offset-4 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
+        <div>
+
+            <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+
+        </div>
+
+
     </div>
-}
+    </div>
+   
+    }
 
-<div>
-
-    <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
-
-</div>
+  

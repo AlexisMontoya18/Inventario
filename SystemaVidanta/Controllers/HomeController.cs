@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Rotativa;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -12,9 +13,10 @@ namespace SystemaVidanta.Controllers
         private SystemVidantaContext db = new SystemVidantaContext();
 
 
-        public ActionResult Index()
+        public ActionResult Index(string nombre="")
         {
-            return View();
+            ViewBag.nombre = nombre;
+            return View(nombre);
         }
 
         public ActionResult Login()
@@ -51,8 +53,11 @@ namespace SystemaVidanta.Controllers
             FormsAuthentication.RedirectToLoginPage();
             //return View();
         }
-    }
 
+
+
+    }
+    
     internal class SystemaVidantaContext
     {
         public IEnumerable<object> Users { get; internal set; }

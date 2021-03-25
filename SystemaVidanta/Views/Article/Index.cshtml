@@ -4,17 +4,18 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Lista Articulos</h2>
+<h2>Index</h2>
 
 <p>
-
-    <a href="@Url.Action("Create")" class="btn btn-success btn-xs">Crear Nuevo <span class="glyphicon glyphicon-pushpin"></span></a>
-
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.NombreArtículo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripción)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Marca)
@@ -23,7 +24,10 @@
             @Html.DisplayNameFor(model => model.Modelo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.descripcion)
+            @Html.DisplayNameFor(model => model.FechaEntrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaSalida)
         </th>
         <th></th>
     </tr>
@@ -31,7 +35,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
+            @Html.DisplayFor(modelItem => item.NombreArtículo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripción)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Marca)
@@ -40,12 +47,15 @@
             @Html.DisplayFor(modelItem => item.Modelo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.descripcion)
+            @Html.DisplayFor(modelItem => item.FechaEntrada)
         </td>
         <td>
-            <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a>
-            <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Info <span class="glyphicon glyphicon-info-sign"></span></a>
-            <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>
+            @Html.DisplayFor(modelItem => item.FechaSalida)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
     </tr>
 }
