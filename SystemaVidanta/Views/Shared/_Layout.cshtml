@@ -1,6 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+
+    @section Styles {
+        <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
+
+        
+    }
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,20 +40,24 @@
 
                     @if (User.Identity.IsAuthenticated)
                     {
+                        if (User.IsInRole("admin"))
+                        {
+                            <li>@Html.ActionLink("ARTICULOS", "create", "Article")</li>
 
+                            <li>@Html.ActionLink("RESGUARDO", "create", "Resguardo")</li>
 
-                        <li>@Html.ActionLink("ARTICULOS", "create", "Article")</li>
+                            <li>@Html.ActionLink("REGISTROS", "index", "users")</li>
 
+                            <li>@Html.ActionLink("CERRAR SESIÓN", "logout", "Home")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("ARTICULOS", "create", "Article")</li>
 
+                            <li>@Html.ActionLink("RESGUARDO", "create", "Resguardo")</li>
 
-
-
-                        <li>@Html.ActionLink("RESGUARDO", "create", "Guard")</li>
-
-                        <li>@Html.ActionLink("REGISTROS", "index", "users")</li>
-
-                        <li>@Html.ActionLink("CERRAR SESIÓN", "logout", "Home")</li>
-
+                            <li>@Html.ActionLink("CERRAR SESIÓN", "logout", "Home")</li>
+                        }
 
                     }
                     else

@@ -7,38 +7,40 @@ using System.Web;
 
 namespace SystemaVidanta.Models
 {
-    public class Guard
+    public class Resguardo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        [Required]
-        public string NumColaborador { get; set; }
-        [Required]
-        public string Empresa { get; set; }
+        [Display(Name = "Numero Colaborador")]
         
-        [Required]
+        public string NumColaborador { get; set; }
+        
+        public string Empresa { get; set; }
+
+        [Display(Name = "Folio Resguardo")]
         public string FolioResguardo { get; set; }
-       
-        [Required]
+
+        [Display(Name = "Fecha Resguardo")]
         [DataType(DataType.Date)]
         public string FechaResguardo { get; set; }
-        [Required]
+        [Display(Name = "Fecha Devolución")]
         [DataType(DataType.Date)]
-        public string FechaDevolución { get; set; }
-        [Required]
+        public string FechaDevolucion { get; set; }
+        [Display(Name = "Tipo Movimiento")]
         public string TipoMovimiento { get; set; }
 
-        [Required]
+        [Display(Name = "Tipo Prestamo")]
         public string TipoPrestamo { get; set; }
-        [Required]
-        public string Ubicación { get; set; }
-      
-        [Required]
-        public string ObservacionesResguardo { get; set; }
-        [Required]
-        public string VoBo { get; set; }
+        [Display(Name = "Ubicación")]
+        public string Ubicacion { get; set; }
 
+        [Display(Name = "Observaciones Resguardo")]
+        public string ObservacionesResguardo { get; set; }
+        [Display(Name = "Vo.Bo")]
+        public string VoBo { get; set; }
+        
+        public virtual ICollection<ResguardoDetalle> DetallesResguardo {get; set;}
 
     }
 }

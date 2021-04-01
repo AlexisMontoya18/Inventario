@@ -37,6 +37,8 @@ namespace SystemaVidanta.Controllers
 
                     if (IsValidUser)
                     {
+                      
+
                         FormsAuthentication.SetAuthCookie(UserExists.ID, false);
 
                         return RedirectToAction("Create", "Article");

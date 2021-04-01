@@ -15,7 +15,7 @@ namespace SystemaVidanta.DAL
         private const string secretKey = Crypto.Crypto.KEY;
        public SystemVidantaContext() : base(Crypto.Crypto.SimpleDecryptWithPassword(Environment.GetEnvironmentVariable("SISRESCONTA"), secretKey))
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SystemVidantaContext, SystemaVidanta.Migrations.Configuration>());
+           Database.SetInitializer(new MigrateDatabaseToLatestVersion<SystemVidantaContext, SystemaVidanta.Migrations.Configuration>());
         }
 
 
@@ -27,6 +27,8 @@ namespace SystemaVidanta.DAL
         
         public virtual DbSet<UserRolesMapping> UserRolesMapping { get; set; }
         public virtual DbSet<Article> Article { get; set; }
+        public virtual DbSet<Resguardo> Resguardos { get; set; }
+        public virtual DbSet<ResguardoDetalle> DetallesResguardo { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -35,6 +37,7 @@ namespace SystemaVidanta.DAL
 
         
 
-        public System.Data.Entity.DbSet<SystemaVidanta.Models.Guard> Guards { get; set; }
+        
+        
     }
 }

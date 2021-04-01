@@ -1,4 +1,4 @@
-﻿@model SystemaVidanta.Models.Guard
+﻿@model SystemaVidanta.Models.Resguardo
 
 @{
     ViewBag.Title = "Create";
@@ -58,10 +58,10 @@
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.FechaDevolución, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.FechaDevolucion, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.FechaDevolución, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.FechaDevolución, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.FechaDevolucion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.FechaDevolucion, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -85,10 +85,10 @@
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Ubicación, htmlAttributes: new { @class = "control-label " })
+                        @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.Ubicación, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Ubicación, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -135,6 +135,7 @@
                         <label for="ArticleInfo">Descripción</label>
                         <div class="form-inline">
                             <input class="form-control" type="text" id="ArticleInfo" name="ArticleInfo" readonly />
+
                             <a class="btn btn-success" id="btninfo"><i class="fas fa-plus"></i></a>
                         </div>
                     </div>
@@ -142,7 +143,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-9 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-success" /> |
+                    <a value="Create" id="Enviar" class="btn btn-success">Guardar</a> |
                     <a href="@Url.Action("Index")" class="btn btn-default"><i class="fas fa-long-arrow-alt-left"></i> Ir a la lista</a>
                 </div>
             </div>
@@ -158,4 +159,51 @@
 
     </div>
 }
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script type="text/javascript">
+    const claveEmpleado = document.getElementById("NoEmpleado")
+    const nombre = document.getElementById("Nombre")
+    const puesto = document.getElementById("Puesto")
+    const departamento = document.getElementById("Departamento")
+    claveEmpleado.addEventListener("blur", function () {
+        getEmployeeData()
+    })
+
+    const IdArticulo = document.getElementById("IdArticulo")
+    const descripcion = document.getElementById("Descripcion")
+    const marca = document.getElementById("Marca")
+    const modelo = document.getElementById("Modelo")
+    IdArticulo.addEventListener("blur", function () {
+        getArticleData()
+    })
+
+    function getEmployeeData() {
+        let clave = claveEmpleado.value
+        fetch(`http://10.23.20.40:8080/api/empleados/oth/${clave}`)
+            .then(response => response.json())
+            .then(data => {
+                nombre.value = `${data.Nombre} ${data.Apellidos}`
+                puesto.value = data.PuestoNom
+                departamento.value = data.DepartamentoNom
+            })
+            .catch((error) => console.error(error.message))
+    }
+
+    function getArticleData() {
+        let id = IdArticulo.value
+        fetch(`http://10.23.20.40:8080/api/articulos/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                descripcion.value = data.Descripcion
+                marca.value = data.Marca
+                modelo.value = data.Modelo
+            })
+            .catch((error) => console.error(error.message))
+    }
+
+</script>
 

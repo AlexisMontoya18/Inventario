@@ -1,0 +1,122 @@
+﻿@model SystemaVidanta.Models.Resguardo
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container ">
+
+        <hr />
+        <div class="well col-sm-6 col-md-6 col-lg-6">
+            <h2 align="center">EDITAR RESGUARDO   </h2> <br />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ID)
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NumColaborador, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NumColaborador, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NumColaborador, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FolioResguardo, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FolioResguardo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FolioResguardo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaResguardo, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FechaResguardo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FechaResguardo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaDevolucion, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FechaDevolucion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FechaDevolucion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoMovimiento, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TipoMovimiento, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TipoMovimiento, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TipoPrestamo, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TipoPrestamo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TipoPrestamo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ObservacionesResguardo, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ObservacionesResguardo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ObservacionesResguardo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VoBo, htmlAttributes: new { @class = "control-label " })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VoBo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.VoBo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                </div>
+            <div class="form-group">
+                <div class="col-md-offset-9 col-md-10">
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                </div>
+                <div>
+                    <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+                </div>
+
+            </div>
+            </div>
+        </div>
+
+}
+

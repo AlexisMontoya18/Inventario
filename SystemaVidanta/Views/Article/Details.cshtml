@@ -4,63 +4,77 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>Article</h4>
+
+<div class=" container">
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreArtículo)
-        </dt>
+    <div class="well col-sm-12 col-md-12 col-lg-12">
+        <h2 align="center">DETALLE ARTICULO </h2> <br />
+        <dl class="dl-horizontal">
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NombreArtículo)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NombreArtículo)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.NombreArtículo)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descripción)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripción)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descripción)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Marca)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripción)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Marca)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Modelo)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Marca)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Modelo)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaEntrada)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Marca)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaEntrada)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaSalida)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Modelo)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.FechaSalida)
+                </dd>
+            </div>
+            <p>
+                <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a> |
 
-        <dd>
-            @Html.DisplayFor(model => model.Modelo)
-        </dd>
+                <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+            </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaEntrada)
-        </dt>
+        </dl>
+    </div>
+    
 
-        <dd>
-            @Html.DisplayFor(model => model.FechaEntrada)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FechaSalida)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FechaSalida)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    

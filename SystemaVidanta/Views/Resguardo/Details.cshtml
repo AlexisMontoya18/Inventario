@@ -1,0 +1,139 @@
+﻿@model SystemaVidanta.Models.Resguardo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/Resguardos.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="container">
+
+    <hr />
+    <div class="well col-sm-12 col-md-12 col-lg-12">
+        <h2 align="center">DETALLE RESGUARDO </h2> <br />
+        <dl class="dl-horizontal">
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumColaborador)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumColaborador)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empresa)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Empresa)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FolioResguardo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FolioResguardo)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaResguardo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaResguardo)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaDevolucion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaDevolucion)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TipoMovimiento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TipoMovimiento)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.TipoPrestamo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.TipoPrestamo)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ubicacion)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Ubicacion)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ObservacionesResguardo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ObservacionesResguardo)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.VoBo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.VoBo)
+                </dd>
+
+            </div>
+
+        </dl>
+
+
+
+    </div>
+
+    <div class="well col-sm-12 col-md-12 col-lg-12">
+        @foreach (var item in Model.DetallesResguardo)
+        {
+            <div class="left">
+                <label>ID ARTICULO: <br /></label>
+
+                <h4>@item.IdArticulo</h4>
+
+                <label> <br />ID RESGUARDO: <br /></label>
+
+                <h4><br />@item.ResguardoID </h4>
+
+
+            </div>
+
+        }
+      
+    </div>
+
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a> |
+
+    <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+</p>

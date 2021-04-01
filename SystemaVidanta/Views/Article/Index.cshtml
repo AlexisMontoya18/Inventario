@@ -3,14 +3,21 @@
 @{
     ViewBag.Title = "Index";
 }
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
 
-<h2>Index</h2>
-
+<h2>LISTA ARTICULOS</h2>
+<input type="submit" value="Buscar" class="btn btn-primary"/>
+<input type="text" name="name" id="name" class="form-control" />
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="@Url.Action("Create")" class="btn btn-success btn-sm">Crear Nuevo <span class=""></span></a>
 </p>
-<table class="table">
+<table class="well table table-bordered">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model =>model.ID)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.NombreArtículo)
         </th>
@@ -33,31 +40,37 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreArtículo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripción)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaEntrada)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaSalida)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+<tr>
+    <td>    
+        @Html.DisplayFor(modelItem => item.ID) 
+    </td>
+   
+    <td>
+        @Html.DisplayFor(modelItem => item.NombreArtículo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Descripción)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Marca)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Modelo)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaEntrada)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaSalida)
+    </td>
+    <td>
+        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a>
+        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Info <span class="glyphicon glyphicon-info-sign"></span></a>
+        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>
+    </td>
+</tr>
+
 }
 
 </table>
+}

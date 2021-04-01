@@ -1,0 +1,127 @@
+﻿@model SystemaVidanta.Models.Resguardo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+
+        <hr />
+        <div class="well col-sm-12 col-md-12 col-lg-12">
+            <h2 align="center">ELIMINAR RESGUARDO </h2>
+            <center>
+                <h3>¿Estás seguro de que quieres eliminar esto?</h3> <br />
+            </center>
+            <dl class="dl-horizontal">
+
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NumColaborador)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.NumColaborador)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Empresa)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Empresa)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FolioResguardo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FolioResguardo)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaResguardo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaResguardo)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaDevolucion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaDevolucion)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TipoMovimiento)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TipoMovimiento)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.TipoPrestamo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.TipoPrestamo)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ubicacion)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ubicacion)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ObservacionesResguardo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ObservacionesResguardo)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.VoBo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.VoBo)
+                    </dd>
+
+                </div>
+
+            </dl>
+
+
+
+
+
+          
+
+        </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger" /> |
+            <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+        </div>
+
+    </div>
+}

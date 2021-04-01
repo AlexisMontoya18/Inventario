@@ -13,6 +13,7 @@ namespace SystemaVidanta.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
+        [Display(Name = "Nombre Artículo")]
         public string NombreArtículo { get; set; }
        
         [Required]
@@ -22,10 +23,12 @@ namespace SystemaVidanta.Models
         [Required]
         public string Modelo { get; set; }
         [Required]
+        [Display(Name = "Fecha Entrada")]
         [DataType(DataType.Date)]
         public string FechaEntrada { get; set; }
         [Required]
         [DataType(DataType.Date)]
+        [Display(Name = "Fecha Salida")]
         public string FechaSalida { get; set; }
 
 

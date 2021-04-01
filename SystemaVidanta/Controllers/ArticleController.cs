@@ -34,6 +34,22 @@ namespace SystemaVidanta.Controllers
             return View(db.Article.ToList());
         }
 
+        [Authorize]
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult Index(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                return View(db.Article.ToList());
+            }
+            else
+            {
+                ViewBag.Colab = name;
+                return View(db.Article.Where(c => c.NombreArtículo.ToLower().Contains(name)));
+            }
+        }
+
         // GET: Article/Details/5
         public ActionResult Details(int? id)
         {

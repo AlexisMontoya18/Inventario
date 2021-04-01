@@ -51,7 +51,15 @@ namespace SystemaVidanta.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.ID = Guid.NewGuid().ToString();
+                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                user.Active = 1;
                 db.Users.Add(user);
+                db.SaveChanges();
+                var rol = new UserRolesMapping();
+                rol.RoleId = user.Level;
+                rol.UserId = user.ID;
+                db.UserRolesMapping.Add(rol);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

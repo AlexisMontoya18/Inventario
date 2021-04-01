@@ -191,7 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
-    <Compile Include="Controllers\GuardController.cs" />
+    <Compile Include="Controllers\ResguardoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -199,17 +199,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202103042242425_InitialCreate.cs" />
-    <Compile Include="Migrations\202103042242425_InitialCreate.Designer.cs">
-      <DependentUpon>202103042242425_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\202103302248021_init.cs" />
+    <Compile Include="Migrations\202103302248021_init.Designer.cs">
+      <DependentUpon>202103302248021_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
-    <Compile Include="Models\Guard.cs" />
+    <Compile Include="Models\Resguardo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ResguardoDetalle.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserRoleProvider.cs" />
@@ -222,9 +223,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fondoLogin.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\menu.css" />
     <Content Include="Content\Register.css" />
+    <Content Include="Content\Resguardos.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -288,11 +291,11 @@
     <Content Include="Views\Users\Details.cshtml" />
     <Content Include="Views\Users\Edit.cshtml" />
     <Content Include="Views\Users\Index.cshtml" />
-    <Content Include="Views\Guard\Create.cshtml" />
-    <Content Include="Views\Guard\Delete.cshtml" />
-    <Content Include="Views\Guard\Details.cshtml" />
-    <Content Include="Views\Guard\Edit.cshtml" />
-    <Content Include="Views\Guard\Index.cshtml" />
+    <Content Include="Views\Resguardo\Create.cshtml" />
+    <Content Include="Views\Resguardo\Delete.cshtml" />
+    <Content Include="Views\Resguardo\Details.cshtml" />
+    <Content Include="Views\Resguardo\Edit.cshtml" />
+    <Content Include="Views\Resguardo\Index.cshtml" />
     <Content Include="Views\Article\Create.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
     <Content Include="Views\Article\Details.cshtml" />
@@ -321,8 +324,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202103042242425_InitialCreate.resx">
-      <DependentUpon>202103042242425_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103302248021_init.resx">
+      <DependentUpon>202103302248021_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
