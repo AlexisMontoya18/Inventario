@@ -8,8 +8,9 @@ namespace SystemaVidanta.Models
 {
     public class User
     {
-        public String ID { get; set; }
-        [Display(Name = "Nombre:")]
+        
+        public String ID { get;  set; }
+        [Display(Name = "Nombre:")] 
         public String Name { get; set; }
         [Display(Name = "Nombre Usuario:")]
         public String Username { get; set; }

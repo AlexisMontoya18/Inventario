@@ -1,5 +1,5 @@
 ﻿var Ids = [];
-
+var cont = 0;
 $(function () {
     $('#Enviar').click(function (event) {
         event.preventDefault();
@@ -12,9 +12,11 @@ $(function () {
             TipoMovimiento: $('#TipoMovimiento').val(),
             TipoPrestamo: $('#TipoPrestamo').val(),
             Ubicacion: $('#Ubicacion').val(),
+            UsuarioRecibe: $('#UsuarioRecibe').val(),
             ObservacionesResguardo: $('#ObservacionesResguardo').val(),
             VoBo: $('#VoBo').val(),
-           
+            imagen: $('#imagen').val(),
+            imagenUS: $('#imagenus').val(),
             DetallesResguardo: Ids,
             __RequestVerificationToken: $('__RequestVerificationToken').val()
         }
@@ -26,8 +28,10 @@ $(function () {
 
             contentType: 'application/json',
             success: function (data) { //Respuesta afirmativa desde el controlador
-                if (data != "") {//Comprobacion de que los datos fueron agregados
-                    alert("¡¡Guardado Con Exito!!");
+                if (data.estado) {//Comprobacion de que los datos fueron agregados
+                    location.href = "/Resguardo/Details/" + data.id;
+                 
+                    
                 }
                 else {//Error al agregar los datos
                     alert('¡Error Al Guardar Los Datos!');
@@ -46,8 +50,7 @@ $(function () {
         Ids.push(detalles);
     });
 
-    
-    
+ 
     $('#btnSearch').click(function () {
   
         var idA = $('#ArticleID').val().trim();
@@ -83,16 +86,15 @@ $(function () {
 
 
 function addRow() {
+    
     var ID = $('#ArticleID').val().trim();
     var Nam = $('#ArticleName').val();
     var info = $('#ArticleInfo').val();
-    var nuevoTr = '<tr><th>' + Nam + '</th><th>' + info + '</th><th>' + ID + ' </th><th><input type="button" class="borrar" value="Eliminar" /></th></tr>';
+    var nuevoTr = '<tr><th>' + Nam + '</th><th>' + info + '</th><th>' + ID + ' </th><th><input type="button" id=' + cont + ' name="Eliminar" class="borrar" value="Eliminar" /></th></tr>';
     jQueryTabla.append(nuevoTr);
+    cont++;
     
-    $(document).on('click', '.borrar', function (event) {
-        event.preventDefault();
-        $(this).closest('tr').remove();
-    });
+    
     
    /*let DetallesResguardo = [{ Nombre: "ArticleName" }, { Descripción: "ArticleInfo" }]
     let resguardo = {
@@ -103,6 +105,13 @@ function addRow() {
   
 };
 
+$(document).on('click', '.borrar', function (event) {
+    var id = $(this).attr('id');
+    Ids.splice(id, 1);
+    cont--;
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
 var jQueryTabla = $("<table class='table table-striped'><tr><th>Nombre</th><th>Descripción</th><th>ID</th><th>Acciones</th></tr></table>");
 jQueryTabla.attr({
     id: "idtabla"

@@ -66,6 +66,7 @@ namespace SystemaVidanta.Controllers
         }
 
         // GET: Article/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();

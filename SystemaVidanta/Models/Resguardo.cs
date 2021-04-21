@@ -13,11 +13,11 @@ namespace SystemaVidanta.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Display(Name = "Numero Colaborador")]
-        
+        [Required]
         public string NumColaborador { get; set; }
-        
+        public string UsuarioRecibe { get; set; }
         public string Empresa { get; set; }
-
+      
         [Display(Name = "Folio Resguardo")]
         public string FolioResguardo { get; set; }
 
@@ -39,7 +39,8 @@ namespace SystemaVidanta.Models
         public string ObservacionesResguardo { get; set; }
         [Display(Name = "Vo.Bo")]
         public string VoBo { get; set; }
-        
+        public string firmaColaborador { get; set; }
+        public string firmaUsuario { get; set; }
         public virtual ICollection<ResguardoDetalle> DetallesResguardo {get; set;}
 
     }

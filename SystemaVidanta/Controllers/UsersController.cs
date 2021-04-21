@@ -16,11 +16,12 @@ namespace SystemaVidanta.Controllers
         private SystemVidantaContext db = new SystemVidantaContext();
 
         // GET: Users
+        [Authorize]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
-
+       
         // GET: Users/Details/5
         public ActionResult Details(string id)
         {
@@ -91,6 +92,7 @@ namespace SystemaVidanta.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Password= user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -119,6 +121,8 @@ namespace SystemaVidanta.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             User user = db.Users.Find(id);
+            UserRolesMapping mapp = db.UserRolesMapping.Where(c => c.UserId == user.ID).FirstOrDefault();
+            db.UserRolesMapping.Remove(mapp);
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");

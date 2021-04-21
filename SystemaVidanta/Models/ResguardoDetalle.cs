@@ -12,11 +12,11 @@ namespace SystemaVidanta.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-        
+
         public int IdArticulo { get; set; }
-      
+
         public int ResguardoID { get; set; }
         public virtual Resguardo Resguardo { get; set; }
-        
+
     }
 }

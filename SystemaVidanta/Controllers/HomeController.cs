@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
+using System.Windows.Documents;
 using SystemaVidanta.DAL;
 using SystemaVidanta.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SystemaVidanta.Controllers
 {
@@ -12,8 +14,8 @@ namespace SystemaVidanta.Controllers
     {
         private SystemVidantaContext db = new SystemVidantaContext();
 
-
-        public ActionResult Index(string nombre="")
+        [Authorize]
+        public ActionResult Index(string nombre = "")
         {
             ViewBag.nombre = nombre;
             return View(nombre);
@@ -37,7 +39,7 @@ namespace SystemaVidanta.Controllers
 
                     if (IsValidUser)
                     {
-                      
+
 
                         FormsAuthentication.SetAuthCookie(UserExists.ID, false);
 
@@ -45,7 +47,7 @@ namespace SystemaVidanta.Controllers
                     }
                 }
             }
-            ModelState.AddModelError("LOGIN_ERROR", "invalid Username or Password");
+            ModelState.AddModelError("LOGIN_ERROR", "Usuario o contraseña invalidos");
             return View();
         }
 
@@ -55,13 +57,11 @@ namespace SystemaVidanta.Controllers
             FormsAuthentication.RedirectToLoginPage();
             //return View();
         }
-
-
-
     }
     
     internal class SystemaVidantaContext
     {
         public IEnumerable<object> Users { get; internal set; }
     }
+    
 }

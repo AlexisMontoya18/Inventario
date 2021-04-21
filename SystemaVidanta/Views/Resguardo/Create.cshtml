@@ -6,6 +6,7 @@
 
 
 
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -18,12 +19,15 @@
 
             <h2 align="center">RESGUARDO ARTÍCULOS  </h2> <br />
             <div class="well col-lg-12">
+                <input type="hidden" id="UsuarioRecibe" name="UsuarioRecibe" value="@User.Identity.Name" />
+                <input type="hidden" id="imagenus" name="imagenus" value="" />
+                <input type="hidden" id="imagen" name="imagen" value="" />
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
                         @Html.LabelFor(model => model.NumColaborador, htmlAttributes: new { @class = "control-label" })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.NumColaborador, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.NumColaborador, new { htmlAttributes = new { @class = "form-control", placeholder=" numero colaborador" } })
                             @Html.ValidationMessageFor(model => model.NumColaborador, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -33,7 +37,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control", placeholder = " nombre de la empresa" } })
                             @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -69,7 +73,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.TipoMovimiento, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.TipoMovimiento, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.TipoMovimiento, new { htmlAttributes = new { @class = "form-control", placeholder = " tipo de movimiento" } })
                             @Html.ValidationMessageFor(model => model.TipoMovimiento, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -78,7 +82,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.TipoPrestamo, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.TipoPrestamo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.TipoPrestamo, new { htmlAttributes = new { @class = "form-control", placeholder = " tipo de prestamo" } })
                             @Html.ValidationMessageFor(model => model.TipoPrestamo, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -87,7 +91,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Ubicacion, new { htmlAttributes = new { @class = "form-control", placeholder = " ubicación" } })
                             @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -96,7 +100,7 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.ObservacionesResguardo, htmlAttributes: new { @class = "control-label " })
                         <div class="input-group">
-                            @Html.EditorFor(model => model.ObservacionesResguardo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.ObservacionesResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " observación" } })
                             @Html.ValidationMessageFor(model => model.ObservacionesResguardo, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -158,6 +162,77 @@
         </div>
 
     </div>
+    <div class=" container">
+        <div class="well col-sm-4 col-md-4 col-lg-4">
+            <center>
+                <b>Firma del colaborador</b>
+            </center>
+
+            <div id="signature-pad" class=" well signature-pad">
+
+                <div class=" signature-pad--body">
+
+                    <canvas></canvas>
+
+                </div>
+
+                <div class=" signature-pad--footer">
+
+
+                    <div class="signature-pad--actions">
+                        <p>
+                            <button type="button" class="button clear" data-action="clear">Borrar</button>
+                            @*<button type="button" class="button" data-action="change-color">Change color</button>*@
+                            <button type="button" class="button" data-action="undo">Corregir</button>
+                            <button type="button" class="button save btn-success" id="save" data-action='save-png'>Aceptar</button>
+                        </p>
+                        <div>
+                            @*<button type="button" class="button save" id="save" data-action='save-png'>Aceptar</button>*@
+                            @*<button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
+                            <button type="button" class="button save" data-action="save-svg">Save as SVG</button>*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class=" container">
+        <div class="well col-sm-4 col-md-4 col-lg-4">
+            <center>
+                <b>Firma del usuario</b>
+            </center>
+
+            <div id="signature-pad2" class="well signature-pad">
+
+                <div class=" signature-pad--body">
+
+                    <canvas></canvas>
+
+                </div>
+
+                <div class=" signature-pad--footer">
+
+
+                    <div class="signature-pad--actions">
+                        <p>
+                            <button type="button" class="button clear" data-action="clear2">Borrar</button>
+                            @*<button type="button" class="button" data-action="change-color">Change color</button>*@
+                            <button type="button" class="button" data-action="undo2">Corregir</button>
+                            <button type="button" class="button save btn-success" id="save" data-action='save-png2'>Aceptar</button>
+                        </p>
+                        <div>
+                            @*<button type="button" class="button save" id="save" data-action='save-png'>Aceptar</button>*@
+                            @*<button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
+                            <button type="button" class="button save" data-action="save-svg">Save as SVG</button>*@
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 }
 
 

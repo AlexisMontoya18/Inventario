@@ -1,0 +1,93 @@
+﻿@model SystemaVidanta.Models.Resguardo
+@{
+    ViewBag.Title = "PrintDetails";
+    Layout = null;
+    var imgCol = String.Format("data:image/gif;base64,{0}", ViewBag.Imagen);
+    var imgUS = String.Format("data:image/gif;base64,{0}", ViewBag.Imagen2);
+}
+
+<link href="@Url.Content("~/Content/PDF.css")" rel="stylesheet" type="text/css" />
+<div class="img">
+    <img src="https://aclara.mx/img/clientes/vidanta_blanco.png">
+  
+</div>
+
+<div class="container row">
+
+
+    <div>
+        <p>ID: @Html.DisplayFor(model => model.ID)</p>
+        <p>Numero colaborador: @Html.DisplayFor(model => model.NumColaborador)</p>
+        <p>Empresa: @Html.DisplayFor(model => model.Empresa)</p>
+        <p>Folio Resguardo: @Html.DisplayFor(model => model.FolioResguardo)</p>
+        <p>Fecha Devolucion: @Html.DisplayFor(model => model.FechaDevolucion)</p>
+        <p>Lugar y Fecha:  @Html.DisplayFor(model => model.Ubicacion), @Html.DisplayFor(model => model.FechaResguardo)</p>
+    </div>
+
+    <div class="PDF">
+
+
+        <p align="center">Tipo Prestamo: @Html.DisplayFor(model => model.TipoPrestamo)</p>
+        <p align="center">Observaciones: @Html.DisplayFor(model => model.ObservacionesResguardo)</p>
+        <p align="center">Vo.bo: @Html.DisplayFor(model => model.VoBo)</p>
+        <p align="center">Tipo Movimiento: @Html.DisplayFor(model => model.TipoMovimiento)</p>
+    </div>
+
+    <table style="width:90%">
+        <tr>
+            <th>ID ARTICULO</th>
+            <th>EMPRESA</th>
+            <th>ID RESGUARDO</th>
+            <th>TIPO PRESTAMO</th>
+            <th>FECHA DEVOLUCIÓN</th>
+            <th>OBSERVACIONES</th>
+
+        </tr>
+
+        @foreach (var item in Model.DetallesResguardo)
+        {
+
+            <tr>
+                <td><p> @Html.DisplayFor(modelItem => item.IdArticulo)</p></td>
+                <td><p> @Html.DisplayFor(model => model.Empresa)</p></td>
+                <td>@Html.DisplayFor(model => model.ID)</td>
+                <td>@Html.DisplayFor(model => model.TipoPrestamo)</td>
+                <td>@Html.DisplayFor(model => model.FechaDevolucion)</td>
+                <td>@Html.DisplayFor(model => model.ObservacionesResguardo)</td>
+            </tr>
+
+
+            <br />
+        }
+    </table>
+    <br />
+    <div class="firma">
+        <img src="@imgUS" />
+        <p>______________________________</p>
+        <p>Elaboro</p>
+        @ViewBag.Nombre.Name
+
+    </div>
+
+    <div class="firma2">
+        <img src="@imgCol" />
+        <p>______________________________</p>
+        <p>Num.Colaborador Y Firma Del Responsable</p>
+        @Html.DisplayFor(model => model.NumColaborador)
+    </div>
+
+    <div class="firma3">
+        <p>______________________________</p>
+        <p>Vo.Bo de telecomunicaciones</p>
+        @Html.DisplayFor(model => model.VoBo)
+    </div> <br />
+    <br />
+    <p>
+        Recibí de conformidad de Grupo VIDANTA las herramientas de trabajo, activos y otros que estaran bajo mi
+        resguardo y me comprometo a usar estos artículos en los terminos del artículo No.134 Fracc. VI de la ley federal de trabajo y en caso de perdida o mal uso, me obligo a cubrir con cargo a mi sueldo y al precio de reposición (precio actual) de la fecha que se indique
+        el faltante, el valor de los articulos que se entreguen de acuerdo con la disposición de Art.No 110 Fracc. I de la ley invocada.
+        Dicho equipo podra ser inventariado y revisado en cualquier momento que  me sea solicitado en mi presencia por un representante autorizado por la empresa.
+    </p>
+    <p>*El presente documento anula los reguardos con fecha anterior que contengan los artículos listados a continuación.</p>
+
+</div>

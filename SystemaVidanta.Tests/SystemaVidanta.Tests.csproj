@@ -117,6 +117,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Scripts\signature_pad.js" />
+    <Content Include="Scripts\signature_pad.min.js" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

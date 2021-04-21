@@ -3,13 +3,13 @@
     width: 50%;
 }
 
-/* Control the left side */
+ Control the left side 
 .left {
     display: inline-block;
     float: left;
 }
 
-/* Control the right side */
+ Control the right side 
 .right {
     display: inline-block;
     float: right;

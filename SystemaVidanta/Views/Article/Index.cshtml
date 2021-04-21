@@ -9,14 +9,15 @@
 
 <h2>LISTA ARTICULOS</h2>
 <input type="submit" value="Buscar" class="btn btn-primary"/>
-<input type="text" name="name" id="name" class="form-control" />
+<input type="text" name="name" id="name" class="form-control" placeholder="Ingrese Nombre Articulo:"/> <br />
 <p>
     <a href="@Url.Action("Create")" class="btn btn-success btn-sm">Crear Nuevo <span class=""></span></a>
 </p>
 <table class="well table table-bordered">
-    <tr>
+    <tr> 
         <th>
-            @Html.DisplayNameFor(model =>model.ID)
+            
+            @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.NombreArtículo)
@@ -65,7 +66,7 @@
     </td>
     <td>
         <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a>
-        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Info <span class="glyphicon glyphicon-info-sign"></span></a>
+        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Detalle <span class="glyphicon glyphicon-info-sign"></span></a>
         <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>
     </td>
 </tr>

@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Rotativa;
+using Rotativa.Options;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -38,6 +41,7 @@ namespace SystemaVidanta.Controllers
         // GET: Guard/Details/5
         public ActionResult Details(int? id)
         {
+           
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,6 +54,7 @@ namespace SystemaVidanta.Controllers
             return View(resguardo);
         }
 
+
         // GET: Guard/Create
         public ActionResult Create()
         {
@@ -61,8 +66,9 @@ namespace SystemaVidanta.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Create(Resguardo resguardo)
+        public JsonResult Create(Resguardo resguardo,string imagen,string imagenUS)
         {
+            var LastID = 0;
             bool estado = false;
             try
             {
@@ -77,36 +83,38 @@ namespace SystemaVidanta.Controllers
                     TipoMovimiento = resguardo.TipoMovimiento,
                     TipoPrestamo = resguardo.TipoPrestamo,
                     Ubicacion = resguardo.Ubicacion,
+                    UsuarioRecibe= resguardo.UsuarioRecibe,
                     ObservacionesResguardo = resguardo.ObservacionesResguardo,
                     VoBo = resguardo.VoBo,
-                 
-                   
-                    };
+                    firmaColaborador = imagen,
+                    firmaUsuario= imagenUS
 
+                };
 
-                    db.Resguardos.Add(obj);
-                    db.SaveChanges();
-                    var LastID = (from c in db.Resguardos orderby c.ID descending select c.ID).First();
+               
+                db.Resguardos.Add(obj);
+                db.SaveChanges();
+                LastID = (from c in db.Resguardos orderby c.ID descending select c.ID).First();
 
-                    foreach (ResguardoDetalle detalles in resguardo.DetallesResguardo)
-                    {
+                foreach (ResguardoDetalle detalles in resguardo.DetallesResguardo)
+                {
                     //ResguardoDetalle test = new ResguardoDetalle { ID = 1, IdArticulo = detalles.IdArticulo };
                     //detalles.Id = 1;
                     detalles.ResguardoID = LastID;
                     db.DetallesResguardo.Add(detalles);
-                    
-                    }
-                    db.SaveChanges();
-                    estado = true;
-                
+
+                }
+                db.SaveChanges();
+                estado = true;
+
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
                 ModelState.AddModelError("GUARD_ERROR", e.Message); return new JsonResult { Data = new { estado } };
             }
-            
 
-            return new JsonResult { Data = new { estado } };
+
+            return new JsonResult { Data = new { estado, id = LastID } };
         }
 
         // GET: Guard/Edit/5
@@ -129,7 +137,7 @@ namespace SystemaVidanta.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NumColaborador,Empresa,FolioResguardo,FechaResguardo,FechaDevolución,TipoMovimiento,TipoPrestamo,Ubicación,ObservacionesResguardo,VoBo")] Resguardo resguardo)
+        public ActionResult Edit([Bind(Include = "ID,NumColaborador,Empresa,FolioResguardo,FechaResguardo,FechaDevolucion,TipoMovimiento,TipoPrestamo,Ubicacion,ObservacionesResguardo,VoBo")] Resguardo resguardo)
         {
             if (ModelState.IsValid)
             {
@@ -165,7 +173,48 @@ namespace SystemaVidanta.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        //metodo para hacer el pdf
+        public ActionResult PdfResguardo(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Resguardo resguardoDetalle = db.Resguardos.Find(id);
+            var nombre = db.Users.Where(c => c.ID== resguardoDetalle.UsuarioRecibe).FirstOrDefault();
+            ViewBag.Imagen2 = resguardoDetalle.firmaUsuario;
+            ViewBag.Imagen = resguardoDetalle.firmaColaborador;
+            ViewBag.Nombre = nombre;
+            if (resguardoDetalle == null)
+            {
+                return HttpNotFound();
+            }
+            return View(resguardoDetalle);
+        }
+        public ActionResult PrintPDF(int? id)
+        {
+            ViewBag.Print = true;
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Resguardo resguardoDetalle1 = db.Resguardos.Find(id);
+            if (resguardoDetalle1 == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Imagen2 = resguardoDetalle1.firmaUsuario;
+            ViewBag.Imagen = resguardoDetalle1.firmaColaborador;
+            Resguardo obj = resguardoDetalle1;
+            obj.firmaUsuario = null;
+            obj.firmaColaborador = null;
+            return new Rotativa.ActionAsPdf("PdfResguardo", obj)
+            {
+                PageSize = Size.A4,
+                PageOrientation= Orientation.Landscape,
+            };
+        }
+        //aqui termina 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -176,3 +225,4 @@ namespace SystemaVidanta.Controllers
         }
     }
 }
+

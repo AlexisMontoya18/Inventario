@@ -4,7 +4,7 @@
 
     @section Styles {
         <link href="@Url.Content("~/Content/menu.css")" rel="stylesheet" type="text/css" />
-
+        <link href="@Url.Content("~/Content/signaturePad.css")" rel="stylesheet" type="text/css" />
         
     }
 
@@ -13,13 +13,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - INVENTARIO CONTRALORIA</title>
     @Styles.Render("~/Content/css")
+
     @Scripts.Render("~/bundles/modernizr")
     @RenderSection("Styles", required: false)
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: rgb(0 0 0 / 0.74);">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -28,7 +29,10 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                @Html.ActionLink(" INVENTARIO CONTRALORIA ", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+                <a class="navbar-brand" href="@Url.Action("Create","Article")" style="margin:auto; vertical-align:auto; align-content:center;">
+                    <img alt="Logo" style="height: 22px; width: 115px; display:block; margin:auto;" src="https://aclara.mx/img/clientes/vidanta_blanco.png">
+                </a>
             </div>
 
             <div class="navbar-collapse collapse">
@@ -49,6 +53,8 @@
                             <li>@Html.ActionLink("REGISTROS", "index", "users")</li>
 
                             <li>@Html.ActionLink("CERRAR SESIÓN", "logout", "Home")</li>
+
+
                         }
                         else
                         {
@@ -79,7 +85,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - CONTRALORIA </p>
+            <p>&copy; @DateTime.Now.Year - CONTRALORIA VIDANTA </p>
         </footer>
     </div>
 
@@ -88,5 +94,14 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     @Scripts.Render("~/Scripts/Resguardos.js")
+    @Scripts.Render("~/Scripts/jquery-3.4.1.min.js")
+    @Scripts.Render("~/Scripts/signature_pad.umd.js")
+    @Scripts.Render("~/Scripts/signature_pad.umd2.js")
+    @Scripts.Render("~/Scripts/signaturePad.js")
+    @Scripts.Render("~/Scripts/app.js")
+    @Scripts.Render("~/Scripts/app2.js")
+
+
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 </body>
 </html>

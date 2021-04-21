@@ -7,7 +7,7 @@
 }
 
 .company__info {
-    background-color:  #374c90;
+    background-color: #0288f5;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     display: flex;
@@ -88,6 +88,6 @@ form {
 }
 
     .btn:hover, .btn:focus {
-        background-color: #00ffff;
-        color: #000000;
+        background-color: #0288f5;
+        color: #fff;
     }

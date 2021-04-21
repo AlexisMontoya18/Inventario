@@ -8,58 +8,73 @@
 <div class="container">
 
     <hr />
-    <div class="well col-sm-8 col-md-8 col-lg-8">
+    <div class="well col-sm-12 col-md-12 col-lg-12">
         <h2 align="center">DETALLE USUARIO </h2> <br />
         <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Name)
-            </dt>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Name)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Username)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Password)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Username)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Password)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Level)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Password)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Level)
+                </dd>
+            </div>
+            <div class="well col-sm-6 col-md-6 col-lg-6">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Active)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Password)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Active)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Level)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Level)
-            </dd>
+            </div>
+        <div class="form-group">
+          <div class="col-md-8 offset-9 col-md-10">
+            
+                <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a> |
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Active)
-            </dt>
+                <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+           
+            </div>
+        </div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Active)
-            </dd>
         </dl>
-        <p>
-        <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a> |
 
-        <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
-        </p>
+
     </div>
-   
-</div>
+  
+        </div>
 
-    
 
-   
+
+
