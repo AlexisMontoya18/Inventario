@@ -12,11 +12,12 @@
 <input type="text" name="name" id="name" class="form-control" placeholder="Ingrese Nombre Articulo:"/> <br />
 <p>
     <a href="@Url.Action("Create")" class="btn btn-success btn-sm">Crear Nuevo <span class=""></span></a>
+    <a href="@Url.Action("Export","Article")" class="btn btn-primary btn-sm">Exportar Excel <span class=""></span></a>
 </p>
 <table class="well table table-bordered">
-    <tr> 
+    <tr>
         <th>
-            
+
             @Html.DisplayNameFor(model => model.ID)
         </th>
         <th>
@@ -32,6 +33,12 @@
             @Html.DisplayNameFor(model => model.Modelo)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.NumSerie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumInterno)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FechaEntrada)
         </th>
         <th>
@@ -42,10 +49,10 @@
 
 @foreach (var item in Model) {
 <tr>
-    <td>    
-        @Html.DisplayFor(modelItem => item.ID) 
+    <td>
+        @Html.DisplayFor(modelItem => item.ID)
     </td>
-   
+
     <td>
         @Html.DisplayFor(modelItem => item.NombreArtículo)
     </td>
@@ -59,15 +66,21 @@
         @Html.DisplayFor(modelItem => item.Modelo)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.NumSerie)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumInterno)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.FechaEntrada)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.FechaSalida)
     </td>
     <td>
-        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a>
-        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Detalle <span class="glyphicon glyphicon-info-sign"></span></a>
-        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>
+        <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a><br />
+        <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Detalle <span class="glyphicon glyphicon-info-sign"></span></a><br />
+        @*<a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>*@
     </td>
 </tr>
 

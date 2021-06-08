@@ -41,6 +41,7 @@ namespace SystemaVidanta.Models
         public string VoBo { get; set; }
         public string firmaColaborador { get; set; }
         public string firmaUsuario { get; set; }
+        public int Estatus { get; set; }
         public virtual ICollection<ResguardoDetalle> DetallesResguardo {get; set;}
 
     }

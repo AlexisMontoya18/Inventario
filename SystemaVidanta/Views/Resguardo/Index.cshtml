@@ -20,6 +20,7 @@
 
         <p>
             <a href="@Url.Action("Create")" class="btn btn-success btn-sm">Crear Nuevo <span class=""></span></a>
+            <a href="@Url.Action("Export","Resguardo")" class="btn btn-primary btn-sm">Exportar Excel <span class=""></span></a>
         </p>
 
 
@@ -49,9 +50,9 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Ubicacion)
                 </th>
-                <th>
+                @*<th>
                     @Html.DisplayNameFor(model => model.ObservacionesResguardo)
-                </th>
+                </th>*@
                 <th>
                     @Html.DisplayNameFor(model => model.VoBo)
                 </th>
@@ -85,16 +86,16 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.Ubicacion)
                     </td>
-                    <td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.ObservacionesResguardo)
-                    </td>
+                    </td>*@
                     <td>
                         @Html.DisplayFor(modelItem => item.VoBo)
                     </td>
                     <td>
                         <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a><br />
                         <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-sm">Detalle <span class="glyphicon glyphicon-info-sign"></span></a>
-                        <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-sm">Borrar <span class="glyphicon glyphicon-trash"></span></a>
+                        @*<a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-sm">Borrar <span class="glyphicon glyphicon-trash"></span></a>*@
                     </td>
                 </tr>
             }

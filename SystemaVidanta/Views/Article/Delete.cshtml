@@ -6,81 +6,102 @@
 
 
 
-<div class="container">
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
 
-    <hr />
-    <div class="well col-sm-12 col-md-12 col-lg-12">
-        <h2 align="center">ELIMINAR ARTICULO </h2>
-        <center>
-            <h3>¿Estás seguro de que quieres eliminar esto?</h3> <br />
-        </center>
-        <dl class="dl-horizontal">
+        <hr />
+        <div class="well col-sm-12 col-md-12 col-lg-12">
+            <h2 align="center">ELIMINAR ARTÍCULO </h2>
+            <center>
+                <h3>¿Estás seguro de que quieres eliminar esto?</h3> <br />
+            </center>
+            <dl class="dl-horizontal">
 
-            <div class="well col-sm-6 col-md-4 col-lg-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.NombreArtículo)
-                </dt>
+                <div class="well col-sm-6 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NombreArtículo)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.NombreArtículo)
-                </dd>
-            </div>
-            <div class="well col-sm-6 col-md-4 col-lg-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Descripción)
-                </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NombreArtículo)
+                    </dd>
+                </div>
+                <div class="well col-sm-6 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Descripción)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Descripción)
-                </dd>
-            </div>
-            <div class="well col-sm-4 col-md-4 col-lg-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Marca)
-                </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Descripción)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Marca)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Marca)
-                </dd>
-            </div>
-            <div class="well col-sm-4 col-md-4 col-lg-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.Modelo)
-                </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Marca)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Modelo)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.Modelo)
-                </dd>
-            </div>
-            <div class="well col-sm-4 col-md-4 col-lg-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.FechaEntrada)
-                </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Modelo)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NumSerie)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.FechaEntrada)
-                </dd>
-            </div>
-            <div class="well col-sm-4 col-md-4 col-lg-4">
-                <dt>
-                    @Html.DisplayNameFor(model => model.FechaSalida)
-                </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.NumSerie)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.NumInterno)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.FechaSalida)
-                </dd>
-            </div>
-        </dl>
+                    <dd>
+                        @Html.DisplayFor(model => model.NumInterno)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaEntrada)
+                    </dt>
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaEntrada)
+                    </dd>
+                </div>
+                <div class="well col-sm-4 col-md-4 col-lg-4">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FechaSalida)
+                    </dt>
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Borrar" class="btn btn-danger" /> |
-                <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
-            </div>
+                    <dd>
+                        @Html.DisplayFor(model => model.FechaSalida)
+                    </dd>
 
-        }
+                </div>
+            </dl>
+
+
+
+           
+        </div>
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger" /> |
+            <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
+        </div>
+
     </div>
-</div>
+}

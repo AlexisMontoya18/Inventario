@@ -7,13 +7,10 @@
 <h1 align="center">USUARIOS REGISTRADOS </h1>
 
 <p>
-
     <a href="@Url.Action("Create")" class="btn btn-success btn-xs">Crear Nuevo <span class="glyphicon glyphicon-user"></span></a>
-
 </p>
 
 <table class=" well table table-bordered">
-
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -22,11 +19,11 @@
             @Html.DisplayNameFor(model => model.Username)
         </th>
         <!--<th>-->
-            @*@Html.DisplayNameFor(model => model.Password)*@
+        @*@Html.DisplayNameFor(model => model.Password)*@
         <!--</th>-->
-        <th>
-            @Html.DisplayNameFor(model => model.Level)
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Level)
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Active)
         </th>
@@ -35,31 +32,78 @@
 
     @foreach (var item in Model)
     {
-        if (User.Identity.Name!=item.ID)
+        if (User.Identity.Name != item.ID)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <!--<td>-->
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <!--<td>-->
                 @*@Html.DisplayFor(modelItem => item.Password)*@
-            <!--</td>-->
-            <td>
-                @Html.DisplayFor(modelItem => item.Level)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning btn-xs">Editar <span class="glyphicon glyphicon-pencil"></span></a>
-                <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info btn-xs">Info <span class="glyphicon glyphicon-info-sign"></span></a>
-                <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger btn-xs">Borrar <span class="glyphicon glyphicon-trash"></span></a>
-            </td>
-        </tr>
+                <!--</td>-->
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Level)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id=item.ID })" class="btn btn-warning btn-xs">Editar <i class="fas fa-pen"></i></a> |
+                    @if (item.Active.Equals(1))
+                    {
+                        <button type="button" class="btn btn-danger btn-xs btnDisabled" data-toggle="modal" data-target="#myModal" id="@item.Name" name="@item.ID">Desactivar <i class="fas fa-user-slash"></i></button>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-success btn-xs btnEnabled" data-toggle="modal" data-target="#myModalActive" id="@item.Name" name="@item.ID">Activar <i class="fas fa-user-check"></i></button>
+                    }
+                </td>
+            </tr>
         }
     }
 
 </table>
+
+<!--Modal para activar-->
+<div id="myModalActive" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close Act" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Activar Usuario</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea activar al usuario? <label id="nameuserAct"></label></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="cerrarAct" data-dismiss="modal">Cerrar</button>
+                <a class="btn btn-success Confirm">Activar <i class="fas fa-user-check"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Modal para desactivar-->
+<div id="myModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Desactivar Usuario</h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Está seguro que desea desactivar al usuario? <label id="nameuser"></label></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="cerrar" data-dismiss="modal">Cerrar</button>
+                <a class="btn btn-danger Confirm">Desactivar <i class="fas fa-user-slash"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

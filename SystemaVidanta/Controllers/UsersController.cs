@@ -67,6 +67,23 @@ namespace SystemaVidanta.Controllers
 
             return View(user);
         }
+        [HttpPost]
+        public JsonResult ChangeActiveUser(string id, int active)
+        {
+            bool estado = false;
+            var ReceipArticleID = 0;
+            try
+            {
+                User user = db.Users.Find(id);
+                user.Active = active;
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                estado = true;
+
+            }
+            catch (Exception e) { ModelState.AddModelError("RECEIP_ERROR", e.Message); return new JsonResult() { Data = new { estado } }; }
+            return new JsonResult { Data = new { estado, ID = ReceipArticleID } };
+        }
 
         // GET: Users/Edit/5
         public ActionResult Edit(string id)

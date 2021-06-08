@@ -35,16 +35,23 @@ namespace SystemaVidanta.Controllers
                 var UserExists = db.Users.Where(u => u.Username == usuario.User).FirstOrDefault();
                 if (UserExists != null)
                 {
-                    bool IsValidUser = BCrypt.Net.BCrypt.Verify(usuario.Password, UserExists?.Password);
-
-                    if (IsValidUser)
+                    if (UserExists.Active.Equals(2))
                     {
-
-
-                        FormsAuthentication.SetAuthCookie(UserExists.ID, false);
-
-                        return RedirectToAction("Create", "Article");
+                        ModelState.AddModelError("LOGIN_ERROR", "El usuario con el que intenta acceder se encuentra desactivado");
+                        return View();
                     }
+                    else
+                    {
+                        bool IsValidUser = BCrypt.Net.BCrypt.Verify(usuario.Password, UserExists?.Password);
+
+                        if (IsValidUser)
+                        {
+                            FormsAuthentication.SetAuthCookie(UserExists.ID, false);
+                            return RedirectToAction("Create", "Article");
+                        }
+                    }
+
+                    
                 }
             }
             ModelState.AddModelError("LOGIN_ERROR", "Usuario o contraseña invalidos");

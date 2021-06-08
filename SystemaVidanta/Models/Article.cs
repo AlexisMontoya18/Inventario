@@ -13,7 +13,7 @@ namespace SystemaVidanta.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
         [Required]
-        [Display(Name = "Nombre Artículo")]
+        [Display(Name = "Nombre Del Artículo")]
         public string NombreArtículo { get; set; }
        
         [Required]
@@ -22,13 +22,19 @@ namespace SystemaVidanta.Models
         public string Marca { get; set; }
         [Required]
         public string Modelo { get; set; }
-        [Required]
-        [Display(Name = "Fecha Entrada")]
+        
+        [Display(Name = "Numero De Serie")]
+        public string NumSerie { get; set; }
+       
+        [Display(Name = "Numero Interno")]
+        public string  NumInterno { get; set; }
+
+        [Display(Name = "Fecha De Entrada")]
         [DataType(DataType.Date)]
         public string FechaEntrada { get; set; }
         [Required]
         [DataType(DataType.Date)]
-        [Display(Name = "Fecha Salida")]
+        [Display(Name = "Fecha De Salida")]
         public string FechaSalida { get; set; }
 
 

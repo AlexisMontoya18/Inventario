@@ -1,10 +1,12 @@
-﻿using Rotativa;
+﻿using ClosedXML.Excel;
+using Rotativa;
 using Rotativa.Options;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing.Printing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -58,6 +60,7 @@ namespace SystemaVidanta.Controllers
         // GET: Guard/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -223,6 +226,49 @@ namespace SystemaVidanta.Controllers
             }
             base.Dispose(disposing);
         }
+        public FileResult Export()
+        {
+            DataTable dt = new DataTable("Resguardos");
+            dt.Columns.AddRange(new DataColumn[10] { new DataColumn("Numero Colaborador"),
+                                           new DataColumn("Empresa"),
+                                           new DataColumn("Folio Resguardo"),
+                                           new DataColumn("Fecha Resguardo"),
+                                           new DataColumn("Fecha Devolucion"),
+                                           new DataColumn("Tipo Movimiento"),
+                                           new DataColumn("Tipo Prestamo"),
+                                           new DataColumn("Ubicacion"),
+                                           new DataColumn("Observaciones Resguardo"),
+                                           new DataColumn("Vo.Bo")
+           });
+            var Resguardos = db.Resguardos.ToList();
+            foreach (var Resguardo in Resguardos)
+            {
+                dt.Rows.Add(Resguardo.NumColaborador,Resguardo.Empresa,Resguardo.FolioResguardo,Resguardo.FechaResguardo,
+                    Resguardo.FechaResguardo,Resguardo.TipoMovimiento,Resguardo.TipoMovimiento,Resguardo.Ubicacion,Resguardo.ObservacionesResguardo,
+                    Resguardo.VoBo
+                );
+            }
+
+
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+
+                var worksheet = wb.Worksheets.Add(dt);
+                var rango = worksheet.Range("A1:H1"); //Seleccionamos un rango
+                rango.Style.Border.SetOutsideBorder(XLBorderStyleValues.Thick); //Generamos las lineas exteriores
+                rango.Style.Border.SetInsideBorder(XLBorderStyleValues.Medium); //Generamos las lineas interiores
+                rango.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center; //Alineamos horizontalmente
+                rango.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;  //Alineamos verticalmente
+                rango.Style.Font.FontSize = 15; //Indicamos el tamaño de la fuente
+                rango.Style.Fill.BackgroundColor = XLColor.BlueGray; //Indicamos el color de background
+                worksheet.Columns(1, 10).AdjustToContents();
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    wb.SaveAs(stream);
+                    return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "LISTA RESGUARDOS  " + DateTime.Now.ToString() + ".xlsx");
+                }
+            }
+        }
     }
 }
-

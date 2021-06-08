@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -77,7 +79,7 @@ namespace SystemaVidanta.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,NombreArtículo,Descripción,Marca,Modelo,FechaEntrada,FechaSalida")] Article article)
+        public ActionResult Create([Bind(Include = "ID,NombreArtículo,Descripción,Marca,Modelo,NumSerie,NumInterno,FechaEntrada,FechaSalida")] Article article)
         {
             if (ModelState.IsValid)
             {
@@ -109,8 +111,9 @@ namespace SystemaVidanta.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,NombreArtículo,Descripción,Marca,Modelo,FechaEntrada,FechaSalida")] Article article)
+        public ActionResult Edit([Bind(Include = "ID,NombreArtículo,Descripción,Marca,Modelo,NumSerie,NumInterno,FechaEntrada,FechaSalida")] Article article)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(article).State = EntityState.Modified;
@@ -153,6 +156,47 @@ namespace SystemaVidanta.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public FileResult Export()
+        {
+            DataTable dt = new DataTable("Articulos");
+            dt.Columns.AddRange(new DataColumn[8] { new DataColumn("Id Artículo"),
+                                           new DataColumn("Nombre del Articulo"),
+                                           new DataColumn("Descripcion"),
+                                           new DataColumn("Marca"),
+                                           new DataColumn("Modelo"),
+                                           new DataColumn("Numero de serie"),
+                                           new DataColumn("Numero Interno"),
+                                           new DataColumn("Fecha de entrada")
+           });
+            var articulos = db.Article.ToList();
+            foreach (var articulo in articulos)
+            {
+                    dt.Rows.Add(articulo.ID,articulo.NombreArtículo,articulo.Descripción,articulo.Marca, articulo.Modelo,articulo.NumSerie,
+                        articulo.NumInterno,articulo.FechaEntrada
+                    );
+            }
+                
+            
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+
+                var worksheet = wb.Worksheets.Add(dt);
+                var rango = worksheet.Range("A1:H1"); //Seleccionamos un rango
+                rango.Style.Border.SetOutsideBorder(XLBorderStyleValues.Thick); //Generamos las lineas exteriores
+                rango.Style.Border.SetInsideBorder(XLBorderStyleValues.Medium); //Generamos las lineas interiores
+                rango.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center; //Alineamos horizontalmente
+                rango.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center;  //Alineamos verticalmente
+                rango.Style.Font.FontSize = 15; //Indicamos el tamaño de la fuente
+                rango.Style.Fill.BackgroundColor = XLColor.BlueGray; //Indicamos el color de background
+                worksheet.Columns(1, 8).AdjustToContents();
+            using (MemoryStream stream = new MemoryStream())
+            {
+                wb.SaveAs(stream);
+                return File(stream.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "LISTA ARTICULOS  " + DateTime.Now.ToString() + ".xlsx");
+            }
+        }
         }
     }
 }

@@ -50,6 +50,24 @@
             </div>
             <div class="well col-sm-4 col-md-4 col-lg-4">
                 <dt>
+                    @Html.DisplayNameFor(model => model.NumSerie)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumSerie)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumInterno)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumInterno)
+                </dd>
+            </div>
+            <div class="well col-sm-4 col-md-4 col-lg-4">
+                <dt>
                     @Html.DisplayNameFor(model => model.FechaEntrada)
                 </dt>
 
@@ -66,15 +84,16 @@
                     @Html.DisplayFor(model => model.FechaSalida)
                 </dd>
             </div>
-            <p>
-                <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a> |
 
-                <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
-            </p>
 
         </dl>
+
+
     </div>
-    
+
+    <a href="@Url.Action("Edit", new { id = Model.ID })" class="btn btn-warning btn-sm">Editar <span class="glyphicon glyphicon-pencil"></span></a> |
+
+    <a href="@Url.Action("Index")" class="btn btn-default btn-sm">Regresar a la lista<span class=" glyphicon glyphicon-arrow-left"></span></a>
 
 </div>
     
