@@ -4,7 +4,9 @@ $(function () {
     $('#Enviar').click(function (event) {
         event.preventDefault();
         var DetallesResguardo = {
-            NumColaborador : $('#NumColaborador').val(),
+            NumColaborador: $('#NumColaborador').val(),
+            Nombre: $('#Nombre').val(),
+            Puesto: $('#Puesto').val(),
             Empresa: $('#Empresa').val(),
             FolioResguardo: $('#FolioResguardo').val(),
             FechaResguardo: $('#FechaResguardo ').val(),

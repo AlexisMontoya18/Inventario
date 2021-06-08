@@ -14,238 +14,261 @@
         <div class="well row container-fluid">
 
             <h2 align="center">RESGUARDO ARTÍCULOS  </h2> <br />
-            <div class="well col-lg-12">
-                <input type="hidden" id="UsuarioRecibe" name="UsuarioRecibe" value="@User.Identity.Name" />
-                <input type="hidden" id="imagenus" name="imagenus" value="" />
-                <input type="hidden" id="imagen" name="imagen" value="" />
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.NumColaborador, htmlAttributes: new { @class = "control-label" })
-                        <div class="input-group" >
-                            @Html.EditorFor(model => model.NumColaborador, new { htmlAttributes = new { @class = "form-control", placeholder=" Numero Colaborador" } })
-                            @Html.ValidationMessageFor(model => model.NumColaborador, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                            
-                            @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
-                            <select id="Empresa" name="Empresa" class="form-control">
-                                <option value="Vidanta Nuevo Vallarta" selected>Vidanta Nuevo Vallarta</option>
-                                <option value="Vidanta Puerto Peñasco">Vidanta Puerto Peñasco</option>
-                                <option value="Vidanta Mazatlán">Vidanta Mazatlán</option>
-                                <option value="Vidanta Los Cabos">Vidanta Los Cabos</option>
-                                <option value="Vidanta Cancún">Vidanta Cancún</option>
-                                </select>
-                            </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-   <div class="form-group">
-  @Html.LabelFor(model => model.FolioResguardo, htmlAttributes: new { @class = "control-label " })
-  <div class="input-group">
-    @Html.EditorFor(model => model.FolioResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " Folio Resguardo" } })
-        @Html.ValidationMessageFor(model => model.FolioResguardo, "", new { @class = "text-danger" })
-                                
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.FechaResguardo, htmlAttributes: new { @class = "control-label" })
-                        <div class="input-group">
-                            @Html.EditorFor(model => model.FechaResguardo, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.FechaResguardo, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.FechaDevolucion, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                            @Html.EditorFor(model => model.FechaDevolucion, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.FechaDevolucion, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.TipoMovimiento, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                            @Html.ValidationMessageFor(model => model.TipoMovimiento, "", new { @class = "text-danger" })
-                            <select id="TipoMovimiento" name="TipoMovimiento" class="form-control">
-                                <option value="Asignacion" selected>Asignacion</option>
-                                <option value="Prestamo" >Prestamo</option>
-
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.TipoPrestamo, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                           
-                            @Html.ValidationMessageFor(model => model.TipoPrestamo, "", new { @class = "text-danger" })
-                            <select id="TipoPrestamo" name="TipoPrestamo" class="form-control">
-                                <option value="Interno" selected>Interno</option>
-                                <option value="Externo">Externo</option>
-
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                          
-                            @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
-                            <select id="Ubicacion" name="Ubicacion" class="form-control">
-                                <option value="Nuevo Vallarta" selected>Nuevo Vallarta</option>
-                                <option value=" Puerto Peñasco">Puerto Peñasco</option>
-                                <option value=" Mazatlán">Mazatlán</option>
-                                <option value=" Los Cabos">Los Cabos</option>
-                                <option value=" Cancún">Cancún</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                @*<div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.ObservacionesResguardo, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                            @Html.EditorFor(model => model.ObservacionesResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " Observación Resguardo" } })
-                            @Html.ValidationMessageFor(model => model.ObservacionesResguardo, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>*@
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.VoBo, htmlAttributes: new { @class = "control-label " })
-                        <div class="input-group">
-                           
-              @Html.ValidationMessageFor(model => model.VoBo, "", new { @class = "text-danger" })
-       <select id="VoBo" name="VoBo" class="form-control">
-        <option value="Victor Hernandez Urban" selected>Lazaro Delgado Renteria</option>
-           
-                                
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <h4>Buscar Articulos</h4>
-            <div class="well col-lg-12">
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        <label for="ArticleID">Artículos</label>
-                        <div class="form-inline">
-                            <input class="form-control" type="text" id="ArticleID" name="ArticleID" />
-                            <a class="btn btn-primary" id="btnSearch">Buscar <i class="fas fa-search"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        <label for="ArticleName">Nombre</label>
-                        <div class="form-inline">
-                            <input class="form-control" type="text" id="ArticleName" name="ArticleName" readonly />
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-4">
-                    <div class="form-group">
-                        <label for="ArticleInfo">Descripción</label>
-                        <div class="form-inline">
-                            <input class="form-control" type="text" id="ArticleInfo" name="ArticleInfo" readonly />
-
-                            <a class="btn btn-success" id="btninfo"><i class="fas fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-9 col-md-10">
-                    <a value="Create" id="Enviar" class="btn btn-success">Guardar</a> |
-                    <a href="@Url.Action("Index")" class="btn btn-default"><i class="fas fa-long-arrow-alt-left"></i> Ir a la lista</a>
-                </div>
-            </div>
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="well col-lg-12">
+<input type="hidden" id="UsuarioRecibe" name="UsuarioRecibe" value="@User.Identity.Name" />
+<input type="hidden" id="imagenus" name="imagenus" value="" />
+<input type="hidden" id="imagen" name="imagen" value="" />
+<div class="col-sm-4 col-md-4 col-lg-4">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.NumColaborador, htmlAttributes: new { @class = "control-label" })
+        <div class="input-group">
+            @Html.EditorFor(model => model.NumColaborador, new { htmlAttributes = new { @class = "form-control", placeholder = " Numero Colaborador" } })
+            @Html.ValidationMessageFor(model => model.NumColaborador, "", new { @class = "text-danger" })
         </div>
+    </div>
+</div>
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+        <div class="input-group">
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = " Nombre" } })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Puesto, htmlAttributes: new { @class = "control-label" })
+        <div class="input-group">
+            @Html.EditorFor(model => model.Puesto, new { htmlAttributes = new { @class = "form-control", placeholder = " Puesto" } })
+            @Html.ValidationMessageFor(model => model.Puesto, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label " })
+        <div class="input-group">
+
+            @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
+            <select id="Empresa" name="Empresa" class="form-control">
+                <option value="Vidanta Nuevo Vallarta" selected>Vidanta Nuevo Vallarta</option>
+                <option value="Vidanta Puerto Peñasco">Vidanta Puerto Peñasco</option>
+                <option value="Vidanta Mazatlán">Vidanta Mazatlán</option>
+                <option value="Vidanta Los Cabos">Vidanta Los Cabos</option>
+                <option value="Vidanta Cancún">Vidanta Cancún</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.FolioResguardo, htmlAttributes: new { @class = "control-label " })
+        <div class="input-group">
+            @Html.EditorFor(model => model.FolioResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " Folio Resguardo" } })
+            @Html.ValidationMessageFor(model => model.FolioResguardo, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaResguardo, htmlAttributes: new { @class = "control-label" })
+        <div class="input-group">
+            @Html.EditorFor(model => model.FechaResguardo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaResguardo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaDevolucion, htmlAttributes: new { @class = "control-label " })
+        <div class="input-group">
+            @Html.EditorFor(model => model.FechaDevolucion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaDevolucion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.TipoMovimiento, htmlAttributes: new { @class = "control-label " })
+        <div class="input-group">
+            @Html.ValidationMessageFor(model => model.TipoMovimiento, "", new { @class = "text-danger" })
+            <select id="TipoMovimiento" name="TipoMovimiento" class="form-control">
+                <option value="Asignacion" selected>Asignacion</option>
+                <option value="Prestamo">Prestamo</option>
+
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.TipoPrestamo, htmlAttributes: new { @class = "control-label " })
+        <div class="input-group">
+
+            @Html.ValidationMessageFor(model => model.TipoPrestamo, "", new { @class = "text-danger" })
+            <select id="TipoPrestamo" name="TipoPrestamo" class="form-control">
+                <option value="Interno" selected>Interno</option>
+                <option value="Externo">Externo</option>
+
+            </select>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label " })
+        <div class="input-group">
+
+            @Html.ValidationMessageFor(model => model.Ubicacion, "", new { @class = "text-danger" })
+            <select id="Ubicacion" name="Ubicacion" class="form-control">
+                <option value="Nuevo Vallarta" selected>Nuevo Vallarta</option>
+                <option value=" Puerto Peñasco">Puerto Peñasco</option>
+                <option value=" Mazatlán">Mazatlán</option>
+                <option value=" Los Cabos">Los Cabos</option>
+                <option value=" Cancún">Cancún</option>
+            </select>
+        </div>
+    </div>
+</div>
+@*<div class="col-sm-6 col-md-4 col-lg-4">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ObservacionesResguardo, htmlAttributes: new { @class = "control-label " })
+                    <div class="input-group">
+                        @Html.EditorFor(model => model.ObservacionesResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " Observación Resguardo" } })
+                        @Html.ValidationMessageFor(model => model.ObservacionesResguardo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>*@
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="form-group">
+                @Html.LabelFor(model => model.VoBo, htmlAttributes: new { @class = "control-label " })
+                <div class="input-group">
+
+                    @Html.ValidationMessageFor(model => model.VoBo, "", new { @class = "text-danger" })
+                    <select id="VoBo" name="VoBo" class="form-control">
+                        <option value="Lazaro Delgado Renteria" selected>Lazaro Delgado Renteria</option>
+
+
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4>Buscar Articulos</h4>
+    <div class="well col-lg-12">
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="form-group">
+                <label for="ArticleID">Artículos</label>
+                <div class="form-inline">
+                    <input class="form-control" type="text" id="ArticleID" name="ArticleID" />
+                    <a class="btn btn-primary" id="btnSearch">Buscar <i class="fas fa-search"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="form-group">
+                <label for="ArticleName">Nombre</label>
+                <div class="form-inline">
+                    <input class="form-control" type="text" id="ArticleName" name="ArticleName" readonly />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-4">
+            <div class="form-group">
+                <label for="ArticleInfo">Descripción</label>
+                <div class="form-inline">
+                    <input class="form-control" type="text" id="ArticleInfo" name="ArticleInfo" readonly />
+
+                    <a class="btn btn-success" id="btninfo"><i class="fas fa-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-9 col-md-10">
+            <a value="Create" id="Enviar" class="btn btn-success">Guardar</a> |
+            <a href="@Url.Action("Index")" class="btn btn-default"><i class="fas fa-long-arrow-alt-left"></i> Ir a la lista</a>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</div>
         <div id="Articletable">
             <table class="table table-striped" id="tablaArticulos"></table>
         </div>
     </div>
-    <div class=" container">
-        <div class="well col-sm-4 col-md-4 col-lg-4">
-            <center>
-                <b>Firma del colaborador</b>
-            </center>
-            <div id="signature-pad" class=" well signature-pad">
-                <div class=" signature-pad--body">
-                    <canvas></canvas>
-                </div>
-                <div class=" signature-pad--footer"> 
-                    <div class="signature-pad--actions">
-                        <p>
-                            <button type="button" class="button clear" data-action="clear">Borrar</button>
-                            @*<button type="button" class="button" data-action="change-color">Change color</button>*@
-                            <button type="button" class="button" data-action="undo">Corregir</button>
-                            <button type="button" class="button save btn-success" id="save" data-action='save-png'>Aceptar</button>
-                        </p>
-                        <div>
-                            @*<button type="button" class="button save" id="save" data-action='save-png'>Aceptar</button>*@
-                            @*<button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-                            <button type="button" class="button save" data-action="save-svg">Save as SVG</button>*@
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <div class=" container">
-        <div class="well col-sm-4 col-md-4 col-lg-4">
-            <center>
-                <b>Firma del usuario</b>
-            </center>
-
-            <div id="signature-pad2" class="well signature-pad">
-
-                <div class=" signature-pad--body">
-
-                    <canvas></canvas>
-
-                </div>
-
-                <div class=" signature-pad--footer">
-
-
-                    <div class="signature-pad--actions">
-                        <p>
-                            <button type="button" class="button clear" data-action="clear2">Borrar</button>
-                            @*<button type="button" class="button" data-action="change-color">Change color</button>*@
-                            <button type="button" class="button" data-action="undo2">Corregir</button>
-                            <button type="button" class="button save btn-success" id="save" data-action='save-png2'>Aceptar</button>
-                        </p>
-                        <div>
-                            @*<button type="button" class="button save" id="save" data-action='save-png'>Aceptar</button>*@
-                            @*<button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
-                            <button type="button" class="button save" data-action="save-svg">Save as SVG</button>*@
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+<div class=" container">
+<div class="well col-sm-4 col-md-4 col-lg-4">
+<center>
+    <b>Firma del colaborador</b>
+</center>
+<div id="signature-pad" class=" well signature-pad">
+    <div class=" signature-pad--body">
+        <canvas></canvas>
     </div>
+    <div class=" signature-pad--footer"> 
+        <div class="signature-pad--actions">
+            <p>
+                <button type="button" class="button clear" data-action="clear">Borrar</button>
+                @*<button type="button" class="button" data-action="change-color">Change color</button>*@
+                <button type="button" class="button" data-action="undo">Corregir</button>
+                <button type="button" class="button save btn-success" id="save" data-action='save-png'>Aceptar</button>
+            </p>
+            <div>
+                @*<button type="button" class="button save" id="save" data-action='save-png'>Aceptar</button>*@
+                @*<button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
+                <button type="button" class="button save" data-action="save-svg">Save as SVG</button>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<div class=" container">
+<div class="well col-sm-4 col-md-4 col-lg-4">
+<center>
+    <b>Firma del usuario</b>
+</center>
+
+<div id="signature-pad2" class="well signature-pad">
+
+    <div class=" signature-pad--body">
+
+        <canvas></canvas>
+
+    </div>
+
+    <div class=" signature-pad--footer">
+
+
+        <div class="signature-pad--actions">
+            <p>
+                <button type="button" class="button clear" data-action="clear2">Borrar</button>
+                @*<button type="button" class="button" data-action="change-color">Change color</button>*@
+                <button type="button" class="button" data-action="undo2">Corregir</button>
+                <button type="button" class="button save btn-success" id="save" data-action='save-png2'>Aceptar</button>
+            </p>
+            <div>
+                @*<button type="button" class="button save" id="save" data-action='save-png'>Aceptar</button>*@
+                @*<button type="button" class="button save" data-action="save-jpg">Save as JPG</button>
+                <button type="button" class="button save" data-action="save-svg">Save as SVG</button>*@
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+
+<input type="file" class="form-control" />
+
+</div>
 </div>
 
 }
@@ -253,20 +276,14 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 <script type="text/javascript">
-    const claveEmpleado = document.getElementById("NoEmpleado")
+    const claveEmpleado = document.getElementById("NumColaborador")
     const nombre = document.getElementById("Nombre")
     const puesto = document.getElementById("Puesto")
-    const departamento = document.getElementById("Departamento")
+
     claveEmpleado.addEventListener("blur", function () {
         getEmployeeData()
     })
-    const IdArticulo = document.getElementById("IdArticulo")
-    const descripcion = document.getElementById("Descripcion")
-    const marca = document.getElementById("Marca")
-    const modelo = document.getElementById("Modelo")
-    IdArticulo.addEventListener("blur", function () {
-        getArticleData()
-    })
+   
     function getEmployeeData() {
         let clave = claveEmpleado.value
         fetch(`http://10.23.20.40:8080/api/empleados/oth/${clave}`)
@@ -274,20 +291,10 @@
             .then(data => {
                 nombre.value = `${data.Nombre} ${data.Apellidos}`
                 puesto.value = data.PuestoNom
-                departamento.value = data.DepartamentoNom
+
             })
             .catch((error) => console.error(error.message))
     }
-    function getArticleData() {
-        let id = IdArticulo.value
-        fetch(`http://10.23.20.40:8080/api/articulos/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                descripcion.value = data.Descripcion
-                marca.value = data.Marca
-                modelo.value = data.Modelo
-            })
-            .catch((error) => console.error(error.message))
-    }
+    
 </script>
 

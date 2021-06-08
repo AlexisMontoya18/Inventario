@@ -15,6 +15,8 @@ namespace SystemaVidanta.Models
         [Display(Name = "Numero Colaborador")]
         [Required]
         public string NumColaborador { get; set; }
+        public string Nombre { get; set; }
+        public string Puesto { get; set; }
         public string UsuarioRecibe { get; set; }
         public string Empresa { get; set; }
       

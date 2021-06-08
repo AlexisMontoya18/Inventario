@@ -28,7 +28,7 @@
 
 
         <p align="center">Tipo Prestamo: @Html.DisplayFor(model => model.TipoPrestamo)</p>
-        <p align="center">Observaciones: @Html.DisplayFor(model => model.ObservacionesResguardo)</p>
+        <p align="center">Nombre: @Html.DisplayFor(model => model.Nombre)</p>
         <p align="center">Vo.bo: @Html.DisplayFor(model => model.VoBo)</p>
         <p align="center">Tipo Movimiento: @Html.DisplayFor(model => model.TipoMovimiento)</p>
     </div>
@@ -37,24 +37,26 @@
         <tr>
             <th>ID ARTICULO</th>
             <th>EMPRESA</th>
-            <th>ID RESGUARDO</th>
+            <th>NOMBRE</th>
+            <th>PUESTO</th>
             <th>TIPO PRESTAMO</th>
             <th>FECHA DEVOLUCIÓN</th>
-            <th>OBSERVACIONES</th>
+
 
         </tr>
 
         @foreach (var item in Model.DetallesResguardo)
         {
 
-            <tr>
-                <td><p> @Html.DisplayFor(modelItem => item.IdArticulo)</p></td>
-                <td><p> @Html.DisplayFor(model => model.Empresa)</p></td>
-                <td>@Html.DisplayFor(model => model.ID)</td>
-                <td>@Html.DisplayFor(model => model.TipoPrestamo)</td>
-                <td>@Html.DisplayFor(model => model.FechaDevolucion)</td>
-                <td>@Html.DisplayFor(model => model.ObservacionesResguardo)</td>
-            </tr>
+    <tr>
+        <td><p> @Html.DisplayFor(modelItem => item.IdArticulo)</p></td>
+        <td><p> @Html.DisplayFor(model => model.Empresa)</p></td>
+        <td>@Html.DisplayFor(model => model.Nombre)</td>
+        <td>@Html.DisplayFor(model => model.Puesto)</td>
+        <td>@Html.DisplayFor(model => model.TipoPrestamo)</td>
+        <td>@Html.DisplayFor(model => model.FechaDevolucion)</td>
+
+    </tr>
 
 
             <br />

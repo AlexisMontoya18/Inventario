@@ -112,49 +112,8 @@
 
         </div>
     </div>
-}
-
-
+} 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-<script type="text/javascript">const claveEmpleado = document.getElementById("NoEmpleado")
-    const nombre = document.getElementById("Nombre")
-    const puesto = document.getElementById("Puesto")
-    const departamento = document.getElementById("Departamento")
-    claveEmpleado.addEventListener("blur", function () {
-        getEmployeeData()
-    })
-
-    const IdArticulo = document.getElementById("IdArticulo")
-    const descripcion = document.getElementById("Descripcion")
-    const marca = document.getElementById("Marca")
-    const modelo = document.getElementById("Modelo")
-    IdArticulo.addEventListener("blur",function() {
-            getArticleData()
-    })
-
-    function getEmployeeData() {
-        let clave = claveEmpleado.value
-        fetch(`http://10.23.20.40:8080/api/empleados/oth/${clave}`)
-            .then(response => response.json())
-            .then(data => {
-                nombre.value = `${data.Nombre} ${data.Apellidos}`
-                puesto.value = data.PuestoNom
-                departamento.value = data.DepartamentoNom
-            })
-            .catch((error) => console.error(error.message))
-    }
-
-    function getArticleData() {
-        let id = IdArticulo.value
-        fetch(`http://10.23.20.40:8080/api/articulos/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                descripcion.value = data.Descripcion
-                marca.value = data.Marca
-                modelo.value = data.Modelo
-            })
-            .catch((error) => console.error(error.message))
-    }</script>
 
