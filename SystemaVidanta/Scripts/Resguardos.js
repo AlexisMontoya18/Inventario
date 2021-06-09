@@ -1,8 +1,26 @@
 ﻿var Ids = [];
 var cont = 0;
+var encodedImages;
 $(function () {
+        $('#archivoInput').change(function () {
+            //Toma el archivo elegido por el input 
+            var value = document.getElementById("archivoInput").files[0];
+
+            //Este objeto FileReader te permite leer archivos
+            var reader = new FileReader();
+
+            //Esta función se ejecuta cuando el reader.readAsDataURL termina 
+            reader.onloadend = function (e) {
+                encodedImages = e.target.result.split("base64,")[1];
+            }
+
+            //Aqui comienza a leer el archivo para posteriormente ejecutar la función onloadend
+            reader.readAsDataURL(value);
+        });
+
     $('#Enviar').click(function (event) {
         event.preventDefault();
+        
         var DetallesResguardo = {
             NumColaborador: $('#NumColaborador').val(),
             Nombre: $('#Nombre').val(),
@@ -17,6 +35,7 @@ $(function () {
             UsuarioRecibe: $('#UsuarioRecibe').val(),
             ObservacionesResguardo: $('#ObservacionesResguardo').val(),
             VoBo: $('#VoBo').val(),
+            encodedImage: encodedImages,
             imagen: $('#imagen').val(),
             imagenUS: $('#imagenus').val(),
             DetallesResguardo: Ids,

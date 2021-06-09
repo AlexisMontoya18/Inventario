@@ -266,8 +266,8 @@
 </div>
 </div>
 
-<input type="file" class="form-control" />
-
+<input type="file" id ="archivoInput" class="form-control"  />
+<canvas style="display:none;" id="imagen3"></canvas>
 </div>
 </div>
 
@@ -295,6 +295,28 @@
             })
             .catch((error) => console.error(error.message))
     }
+
+    //function validarExt() {
+    //    var archivoInput = document.getElementById('archivoInput');
+    //    var archivoRuta = archivoInput.value;
+    //    var extPermitidas = /(.jpg|.png)$/i;
+
+    //    if (!extPermitidas.exec(archivoRuta)) {
+    //        alert('Asegurate aver seleccionado una Imagen');
+    //        archivoInput.value = '';
+    //        return false;
+    //    }
+    //    else {
+    //        if (archivoInput.files && archivoInput.files[0]) {
+    //            var visor = new FileReader();
+    //            visor.onload = function (e) {
+    //                document.getElementById('visorArchivo').innerHTML = '<embed src="' + e.target.result + '" width="500" height="500" >';
+    //            };
+    //            visor.readAsDataURL(archivoInput.files[0]);
+    //        }
+
+    //    }
+   /* }*/
     
 </script>
 

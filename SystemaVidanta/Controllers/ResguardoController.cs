@@ -69,7 +69,7 @@ namespace SystemaVidanta.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         //[ValidateAntiForgeryToken]
-        public JsonResult Create(Resguardo resguardo,string imagen,string imagenUS)
+        public JsonResult Create(Resguardo resguardo,string imagen,string imagenUS, string encodedImage)
         {
             var LastID = 0;
             bool estado = false;
@@ -90,10 +90,11 @@ namespace SystemaVidanta.Controllers
                     Ubicacion = resguardo.Ubicacion,
                     UsuarioRecibe= resguardo.UsuarioRecibe,
                     ObservacionesResguardo = resguardo.ObservacionesResguardo,
+                    imagen= encodedImage,
                     VoBo = resguardo.VoBo,
                     firmaColaborador = imagen,
                     firmaUsuario= imagenUS
-
+                    
                 };
 
                
@@ -189,6 +190,7 @@ namespace SystemaVidanta.Controllers
             var nombre = db.Users.Where(c => c.ID== resguardoDetalle.UsuarioRecibe).FirstOrDefault();
             ViewBag.Imagen2 = resguardoDetalle.firmaUsuario;
             ViewBag.Imagen = resguardoDetalle.firmaColaborador;
+            ViewBag.Imagen3 = resguardoDetalle.imagen;
             ViewBag.Nombre = nombre;
             if (resguardoDetalle == null)
             {
@@ -210,9 +212,11 @@ namespace SystemaVidanta.Controllers
             }
             ViewBag.Imagen2 = resguardoDetalle1.firmaUsuario;
             ViewBag.Imagen = resguardoDetalle1.firmaColaborador;
+            ViewBag.Imagen3 = resguardoDetalle1.imagen;
             Resguardo obj = resguardoDetalle1;
             obj.firmaUsuario = null;
             obj.firmaColaborador = null;
+            obj.imagen = null;
             return new Rotativa.ActionAsPdf("PdfResguardo", obj)
             {
                 PageSize = Size.A4,

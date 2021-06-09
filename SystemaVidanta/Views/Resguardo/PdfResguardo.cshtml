@@ -4,6 +4,8 @@
     Layout = null;
     var imgCol = String.Format("data:image/gif;base64,{0}", ViewBag.Imagen);
     var imgUS = String.Format("data:image/gif;base64,{0}", ViewBag.Imagen2);
+    var imgn= String.Format("data:image/gif;base64,{0}", ViewBag.Imagen3);
+
 }
 
 <link href="@Url.Content("~/Content/PDF.css")" rel="stylesheet" type="text/css" />
@@ -25,12 +27,13 @@
     </div>
 
     <div class="PDF">
-
-
-        <p align="center">Tipo Prestamo: @Html.DisplayFor(model => model.TipoPrestamo)</p>
+        <img src="@imgn" class="img-responsive" />
+        @*<p align="center">Tipo Prestamo: @Html.DisplayFor(model => model.TipoPrestamo)</p>
         <p align="center">Nombre: @Html.DisplayFor(model => model.Nombre)</p>
-        <p align="center">Vo.bo: @Html.DisplayFor(model => model.VoBo)</p>
+        <p align="center">Vo.bo: @Html.DisplayFor(model => model.VoBo)</p>*@
         <p align="center">Tipo Movimiento: @Html.DisplayFor(model => model.TipoMovimiento)</p>
+
+
     </div>
 
     <table style="width:90%">
