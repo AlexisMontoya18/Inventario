@@ -10,6 +10,7 @@ namespace SystemaVidanta.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(SystemaVidanta.DAL.SystemVidantaContext context)

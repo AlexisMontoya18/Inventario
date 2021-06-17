@@ -1,0 +1,82 @@
+﻿@model SystemaVidanta.Models.Bitacora
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bitacora</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Accion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Accion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tabla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tabla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyModified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyModified)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimaryKeyValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimaryKeyValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OldValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OldValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NewValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NewValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

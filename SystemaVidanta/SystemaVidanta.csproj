@@ -210,6 +210,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\BitacoraController.cs" />
     <Compile Include="Controllers\ResguardoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -218,6 +219,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helppers\keysGet.cs" />
     <Compile Include="Migrations\202103302248021_init.cs" />
     <Compile Include="Migrations\202103302248021_init.Designer.cs">
       <DependentUpon>202103302248021_init.cs</DependentUpon>
@@ -229,6 +231,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Article.cs" />
+    <Compile Include="Models\Bitacora.cs" />
     <Compile Include="Models\Resguardo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Login.cs" />
@@ -333,6 +336,11 @@
     <Content Include="Views\Resguardo\PdfResguardo.cshtml" />
     <Content Include="Scripts\app2.js" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Bitacora\Create.cshtml" />
+    <Content Include="Views\Bitacora\Delete.cshtml" />
+    <Content Include="Views\Bitacora\Details.cshtml" />
+    <Content Include="Views\Bitacora\Edit.cshtml" />
+    <Content Include="Views\Bitacora\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
