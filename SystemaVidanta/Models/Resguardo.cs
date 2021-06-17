@@ -19,7 +19,6 @@ namespace SystemaVidanta.Models
         public string Puesto { get; set; }
         public string UsuarioRecibe { get; set; }
         public string Empresa { get; set; }
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "Folio Resguardo")]
         public int  FolioResguardo { get; set; }
 

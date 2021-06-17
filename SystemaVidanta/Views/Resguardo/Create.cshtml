@@ -32,7 +32,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
         <div class="input-group">
-            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = " Nombre" } })
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = " Nombre", readOnly = "readonly" } })
             @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -41,7 +41,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Puesto, htmlAttributes: new { @class = "control-label" })
         <div class="input-group">
-            @Html.EditorFor(model => model.Puesto, new { htmlAttributes = new { @class = "form-control", placeholder = " Puesto" } })
+            @Html.EditorFor(model => model.Puesto, new { htmlAttributes = new { @class = "form-control", placeholder = " Puesto", readOnly = "readonly" } })
             @Html.ValidationMessageFor(model => model.Puesto, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -69,7 +69,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.FolioResguardo, htmlAttributes: new { @class = "control-label " })
         <div class="input-group">
-            @Html.EditorFor(model => model.FolioResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " Folio Resguardo" } })
+            @Html.EditorFor(model => model.FolioResguardo, new { htmlAttributes = new { @class = "form-control", placeholder = " Folio Resguardo", @Value=Convert.ToInt32(ViewBag.Folio)+1 , readOnly="readonly"} })
             @Html.ValidationMessageFor(model => model.FolioResguardo, "", new { @class = "text-danger" })
 
         </div>

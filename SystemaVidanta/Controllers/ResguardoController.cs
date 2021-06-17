@@ -60,7 +60,8 @@ namespace SystemaVidanta.Controllers
         // GET: Guard/Create
         public ActionResult Create()
         {
-
+            var LastID = (from c in db.Resguardos orderby c.ID descending select c.ID).First();
+            ViewBag.Folio = LastID;
             return View();
         }
 
